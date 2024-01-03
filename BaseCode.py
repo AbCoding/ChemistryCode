@@ -1,5 +1,12 @@
 import math
+class Element:
+    def __init__(self, ElementName, mass):
+        self.name = ElementName
+        self.mass = mass
+        self.AtomicMass = AtomicMass[ElementName]
 
+    def numMoles(self):
+        return self.mass / self.AtomicMass
 AtomicMass = {
     "H": 1.00784,
     "He": 4.0026,
@@ -32,13 +39,16 @@ AtomicMass = {
     "Tl": 204.3833,
     "Co": 58.933195,
     "As": 74.9216,
-    "Cd": 112.411
+    "Cd": 112.411,
+    "Ba":137.327,
+    "Ti":47.867,
+  "Fe":55.845
 }
 
 def calcRelativeAbundance(ListOfMass, ListOfPercents):
     SumOfValues = 0
     for i in range(len(ListOfMass)):
-        SumOfValues += ListOfMass[i] * ListOfPercents[i] / 100
+        SumOfValues += ListOfMass[i] * ListOfPercents[i]
     return SumOfValues
 
 
@@ -112,3 +122,13 @@ def CalcMolarMass(chemical):
 
 
 
+
+def ElementalAnalysis(mass,CompoundsInMixture,KnownElements):
+  for i in KnownElements:
+    v=i.numMoles()
+
+    for j in CompoundsInMixture:
+      if i.name in j:
+        m= CalcMolarMass(j)
+        print(m*v/mass*100)
+  return 1

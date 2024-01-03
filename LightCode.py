@@ -28,18 +28,6 @@ def ToScientificNotation(num, sigFigs):
     return (str(tmpnum) + "*10^{}".format(exp))
 
 
-def LightUI():
-    Operation = input(
-        "What Operation would you like to do[1=getWavelength,2=getFreq,3=getPhoton,4=getPhotonCount]: "
-    )
-    if Operation == 1:
-        inp = input("Whats the Frequency")
-        print(getWavelength(inp))
-    elif Operation == 2:
-        inp = input("Whats the WaveLength")
-        print(getFrequency(inp))
-
-    return 2
 
 
-LightUI()
+
